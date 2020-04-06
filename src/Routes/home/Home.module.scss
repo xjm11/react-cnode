@@ -1,0 +1,15 @@
+.container {
+  .topicsList {
+    //width: 300px;
+    //background-color: cyan;
+    :global {
+      .ant-list-item {
+        background-color: rgb(245, 245, 245);
+      }
+    }
+  }
+
+  .footer {
+    background-color: pink;
+  }
+}
