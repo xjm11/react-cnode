@@ -25,7 +25,7 @@ export const BannerReducer = (state = initialState, action) => {
     case REQUEST: {
       return {
         ...state,
-        exitVisible: true,
+        isExitVisible: true,
       };
     }
     case HIDDEN: {

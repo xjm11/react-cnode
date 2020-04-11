@@ -1,0 +1,33 @@
+.container {
+  min-width: 200px;
+  .topicsList {
+    //width: 300px;
+    background-color: cyan;
+    :global {
+      .ant-list-item {
+        background-color: rgb(245, 245, 245);
+        //color: black;
+      }
+      .ant-list-item-meta-avatar {
+        margin-right: 0;
+      }
+      .ant-list-items {
+        min-width: 200px;
+      }
+    }
+  }
+
+  .titleDiv {
+    //display: flex;
+    //flex-direction: row;
+    //flex-wrap: nowrap;
+    position: relative;
+    //overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    a {
+      position: absolute;
+      //display: block;
+    }
+  }
+}

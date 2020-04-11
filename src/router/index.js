@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import MyContent from '../Routes/content/Content';
+import MyContent from '../Routes/mycontent/MyContent';
 import Login from '../Routes/Login';
-import User from '../Routes/User';
-import Menu from '../Routes/home/conpoments/Menu';
+import User from '../Routes/User/User';
+import Menu from '../Routes/home/Menu/Menu';
 import Home from '../Routes/home/Home';
-import Layout from '../Routes/layout/Layout'
+import Layout from '../Routes/layout/Layout';
 
 const RouteWithSubRoutes = route => (
   <Route
@@ -27,7 +27,7 @@ export const routes = [
     component: Layout,
     routes: [
       {
-        path: '/content/:id',
+        path: '/my_content/:id',
         component: MyContent,
       },
       {
@@ -35,7 +35,7 @@ export const routes = [
         component: Login,
       },
       {
-        path: '/user',
+        path: '/user/:user',
         component: User,
       },
       {

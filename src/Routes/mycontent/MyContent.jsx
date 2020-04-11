@@ -1,14 +1,9 @@
 import React from 'react';
 import { Typography, Divider } from 'antd';
 import { PageHeader, Button, Descriptions, message, Comment, List } from 'antd';
-import styles from './Content.module.scss';
-import { Redirect } from 'react-router-dom';
-import { get, post } from '../../services/httpRequst';
-import {
-  collectTopic,
-  deCollectTopic,
-  getDataById,
-} from '../../services/request'
+import styles from './MyContent.module.scss';
+import { Redirect, Link } from 'react-router-dom';
+import { collectTopic, deCollectTopic, getDataById } from '../../services/request';
 
 const { Paragraph } = Typography;
 const baseUrl = ' https://cnodejs.org/api/v1';
@@ -27,7 +22,7 @@ class MyContent extends React.Component {
       topic: this.props.match.params.id,
       accesstoken: localStorage.getItem('cnodeToken'),
     };
-    getDataById(params, )
+    getDataById(params)
       .then(data => {
         this.setState({
           content: data,
@@ -53,7 +48,7 @@ class MyContent extends React.Component {
     const request = isCollect ? deCollectTopic : collectTopic;
     const params = {
       accesstoken: token,
-      topic_id:topicId
+      topic_id: topicId,
     };
     request(params)
       .then(data => {
@@ -118,7 +113,7 @@ class MyContent extends React.Component {
           renderItem={item => (
             <li>
               <Comment
-                author={item.author.loginname}
+                author={<Link to={`/user/${item.author.loginname}`}>item.author.loginname</Link>}
                 // actions={item.is_uped && '楼主'}
                 avatar={item.author.avatar_url}
                 content=<div dangerouslySetInnerHTML={{ __html: item.content }} />

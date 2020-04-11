@@ -1,12 +1,10 @@
 import React from 'react';
-import { message } from 'antd'
-import { get } from '../services/httpRequst';
-import { getUserInfo } from '../services/request'
-
+import { message } from 'antd';
+import { getUserInfo } from '../../services/request';
+import Collection from './Collection';
 
 class User extends React.Component {
   constructor(props) {
-    console.log(props);
     super(props);
     this.state = {
       userInfo: {},
@@ -14,27 +12,30 @@ class User extends React.Component {
   }
 
   componentDidMount() {
-    const userInfo = JSON.parse(localStorage.getItem('userInfo'));
-    if (!userInfo) {
+    const {
+      match: {
+        params: { user },
+      },
+    } = this.props;
+
+    if (!user) {
       return;
     }
-
-    getUserInfo()
-      .then((data) => {
-        console.log('usr', data);
+    getUserInfo(user)
+      .then(data => {
         this.setState({
           userInfo: data,
         });
       })
-      .catch(() =>{
+      .catch(() => {
         message.error('操作失败');
-    });
+      });
   }
 
   render() {
     const { userInfo } = this.state;
     return (
-      <div style={{ backgroundColor: 'rgb(0,0,0,0.25)', paddingLeft: '10px' }}>
+      <div style={{ backgroundColor: 'rgb(0,0,0,0.25)', padding: '0 100px' }}>
         <div>
           <h3>个人信息</h3>
           <img
@@ -46,16 +47,9 @@ class User extends React.Component {
         </div>
         <br />
         收藏的主题
-        {userInfo.recent_replies &&
-          userInfo.recent_replies.map(item => {
-            return <div>123</div>;
-          })}
-        <br />
-        我的回答
-        {userInfo.recent_replies &&
-          userInfo.recent_replies.map(item => {
-            return <div>123</div>;
-          })}
+        <Collection data={userInfo.recent_topics} />
+        最近参与的话题
+        <Collection data={userInfo.recent_replies} />
       </div>
     );
   }

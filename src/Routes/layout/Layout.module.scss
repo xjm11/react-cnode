@@ -1,0 +1,98 @@
+.logo {
+  width: 120px;
+  padding: 3px 20px;
+  height: 34px;
+  line-height: 34px;
+  color: #ccc;
+  font-weight: 700;
+}
+:global {
+  .ant-layout-header {
+    line-height: 46px;
+    height: 46px;
+  }
+
+  .ant-layout {
+    height: 100%;
+  }
+}
+@media screen and (min-width: 720px) {
+  .box {
+    display: flex;
+    justify-content: space-between;
+    background-color: black;
+    //height: 100%;
+  }
+
+  .ant-layout-header {
+    height: 90px;
+  }
+}
+
+@media screen and (max-width: 72px) {
+  .box {
+    display: flex;
+    //height: 100%;
+  }
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.selected {
+  background-color: pink;
+}
+
+.none-selected {
+}
+
+.LayCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 0 50px;
+  height: 100%;
+  //align-items: center;
+  .laySider {
+    width: 20%;
+    //background-color: #61dafb;
+    padding-left: 25px;
+  }
+  .layContent {
+    //padding: 0 10px;
+    width: 80%;
+  }
+}
+
+.introduction {
+  background-color: gainsboro;
+  padding: 10px;
+}
+
+.title {
+  background-color: white;
+  height: 40px;
+  line-height: 40px;
+  padding-left: 7px;
+}
+
+.tip {
+  height: 10vh;
+  background-color: gainsboro;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .btn {
+    vertical-align: center;
+    font-size: x-small;
+    background-color: #61dafb;
+    padding: 5px;
+    border-radius: 5px;
+    width: 30vh;
+    display: inline-block;
+    text-align: center;
+    align-items: center;
+  }
+}

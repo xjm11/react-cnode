@@ -4,7 +4,8 @@ import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { Switch } from 'react-router';
 import styles from './Menu.module.scss';
-import { RoutesRender } from '../../../router'
+import { RoutesRender } from '../../../router';
+import classNames from 'classnames';
 
 const { Content, Footer } = AntLayout;
 const layoutMenuOptions = [
@@ -25,24 +26,26 @@ class Menu extends React.Component {
       location: { pathname },
       routes,
     } = this.props;
+
     return (
       <AntLayout>
         <Content className={styles.between}>
           <ul className={styles.menu}>
             {layoutMenuOptions.map(item => {
+              const isSelect = pathname === `/topics/${item.path}`;
+              const liClass = classNames({
+                selected: isSelect,
+                nonselected: !isSelect,
+              });
               return (
-                <li key={item.path} className={pathname === `/topics/${item.path}`
-                  ? styles.selected : styles.nonselected}>
+                <li key={item.path} className={styles[liClass]}>
                   <Link to={`/topics/${item.path}`}>{item.name}</Link>
                 </li>
               );
             })}
           </ul>
-          <Switch>
-            {RoutesRender(routes)}
-          </Switch>
+          <Switch>{RoutesRender(routes)}</Switch>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
       </AntLayout>
     );
   }

@@ -6,9 +6,7 @@ import { routes, RoutesRender } from './router/index';
 
 const App = () => (
   <Provider store={store}>
-    <Router>
-      {RoutesRender(routes)}
-    </Router>
+    <Router>{RoutesRender(routes)}</Router>
   </Provider>
 );
 

@@ -1,7 +1,6 @@
-import React  from 'react';
-
-export const TabItem = (props) => {
-  const {active, onClick} = props;
+import React from 'react';
+export const TabItem = props => {
+  const { active, onClick } = props;
   const tabStyle = {
     'max-width': '150px',
     color: active ? 'red' : 'green',

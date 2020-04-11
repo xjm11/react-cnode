@@ -65,7 +65,8 @@ export const post = (url, params = {}) => {
       .then(data => {
         if (data.status === 200) {
           if (data.data.success === true) {
-            resolve(data.data.data);
+            console.log('post_url', data);
+            resolve(data.data.data ? data.data.data : data.data);
           } else {
             reject(data.data.data);
           }

@@ -4,7 +4,12 @@ import { List, Avatar, Pagination, message } from 'antd';
 
 import styles from './Home.module.scss';
 import { getHomeData } from '../../services/request';
+import moment from 'moment';
 
+const tabMap = {
+  share: '分享',
+  ask: '问答',
+};
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -44,7 +49,7 @@ class Home extends React.Component {
     }
   }
 
-  getFetchData(tab, page, limit = 10) {
+  getFetchData(tab, page, limit = 20) {
     const nowTab = tab || 'all';
     const params = {
       mdrender: false,
@@ -63,7 +68,7 @@ class Home extends React.Component {
       });
   }
 
-  onChange = (page, limit = 10) => {
+  onChange = page => {
     const {
       match: {
         params: { tab },
@@ -72,7 +77,7 @@ class Home extends React.Component {
     this.setState({
       page: page,
     });
-    this.getFetchData(tab, page, limit);
+    this.getFetchData(tab, page);
   };
 
   render() {
@@ -84,13 +89,50 @@ class Home extends React.Component {
           className={styles.topicsList}
           dataSource={topicList}
           renderItem={item => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={item.author.avatar_url} />}
-                title={<Link to={`/content/${item.id}`}>{item.title}</Link>}
-                description=""
-              />
-            </List.Item>
+            //   (
+            //   <List.Item>
+            //     <List.Item.Meta
+            //       avatar={<Avatar src={item.author.avatar_url} />}
+            //       description={``}
+            //       title={
+            //         <div className={styles.titleDiv}>
+            //           <span
+            //             className={styles.count}
+            //           >{`${item.reply_count}/${item.visit_count}`}</span>{' '}
+            //           <span className={item.top ? styles.top : styles.tab}>
+            //             {item.top ? '置顶' : tabMap[item.tab]}
+            //           </span>{' '}
+            //           <Link to={`/my_content/${item.id}`}>{item.title}</Link>
+            //         </div>
+            //       }
+            //     />
+            //     <div>
+            //       {moment(item.last_reply_at)
+            //         .startOf('hour')
+            //         .fromNow()}
+            //     </div>
+            //   </List.Item>
+            // )
+            <>
+              <div className={styles.summery}>
+                <div className={styles.titleDiv}>
+                  <Avatar src={item.author.avatar_url} />
+                  <span
+                    className={styles.count}
+                  >{`${item.reply_count}/${item.visit_count}`}</span>{' '}
+                  <span className={item.top ? styles.top : styles.tab}>
+                    {item.top ? '置顶' : tabMap[item.tab]}
+                  </span>{' '}
+                  <Link to={`/my_content/${item.id}`}>{item.title}</Link>
+                </div>
+                <span className={styles.dateDispaly}>
+                  {' '}
+                  {moment(item.last_reply_at)
+                    .startOf('hour')
+                    .fromNow()}
+                </span>
+              </div>
+            </>
           )}
         />
         <Pagination

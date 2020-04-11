@@ -32,6 +32,7 @@ class HorizontalLoginForm extends React.Component {
 
       loginWithToken({ accesstoken: values.token })
         .then(response => {
+          console.log('user', response);
           localStorage.setItem('cnodeToken', values.token);
           localStorage.setItem('userInfo', JSON.stringify(response));
           message.success('登录成功');
