@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Avatar } from 'antd';
+import { Avatar, message } from 'antd';
 import styles from './Layout.module.scss';
 
 class MySider extends React.Component {
@@ -11,8 +11,12 @@ class MySider extends React.Component {
   };
 
   render() {
-    const userInfo =
-      localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'));
+    let userInfo = '';
+    try {
+      userInfo = localStorage.getItem('userInfo') && JSON.parse(localStorage.getItem('userInfo'));
+    } catch (error) {
+      message.error('error');
+    }
     return (
       <>
         {userInfo ? (
