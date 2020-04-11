@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import { List, Avatar, Pagination } from 'antd';
 import styles from './Collection.module.scss';
 import moment from 'moment';
-import produce from 'immer';
 
 const tabMap = {
   share: '分享',
@@ -33,6 +32,10 @@ class Collection extends React.Component {
     const { data } = this.props;
     const { dataList, page } = this.state;
     const dataArr = data && !dataList.length && data.slice(0, 5);
+    console.log(dataArr);
+    if (dataList && dataList.length === 0 && dataArr && dataArr.length === 0) {
+      return <p>暂时没有数据</p>;
+    }
     return (
       <div className={styles.container}>
         <List

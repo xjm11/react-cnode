@@ -40,10 +40,13 @@ class HorizontalLoginForm extends React.Component {
             redirectToIndex: true,
           });
           visibleExit();
+          console.log(123);
+          console.log(JSON.stringify(response));
 
           const { history } = this.props;
           history.push('/', this.state);
           console.log(history);
+          console.log(2222);
         })
         .catch(() => {
           message.error('登录失败');

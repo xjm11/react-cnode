@@ -49,7 +49,7 @@ class Home extends React.Component {
     }
   }
 
-  getFetchData(tab, page, limit = 20) {
+  getFetchData(tab, page, limit = 10) {
     const nowTab = tab || 'all';
     const params = {
       mdrender: false,
