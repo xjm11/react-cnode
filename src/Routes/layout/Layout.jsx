@@ -85,7 +85,7 @@ class Layout extends React.Component {
             </div>
           </div>
         )}
-        <Footer style={{ textAlign: 'center' }}>Ant Design ©2018 Created by Ant UED</Footer>
+        <Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
       </AntLayout>
     );
   }
