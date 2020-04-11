@@ -9,6 +9,7 @@ import moment from 'moment';
 const tabMap = {
   share: '分享',
   ask: '问答',
+  job: '招聘',
 };
 class Home extends React.Component {
   constructor(props) {
