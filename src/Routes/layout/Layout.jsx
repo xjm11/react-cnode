@@ -57,14 +57,7 @@ class Layout extends React.Component {
                 <Link to="/login">登录</Link>
               </Menu.Item>
             )}
-            {/*{token && (*/}
-            {/*  <Menu.Item key="3">*/}
-            {/*    <Link to={`/User/${user}`}>用户</Link>*/}
-            {/*    /!*<UserLogin>*!/*/}
-            {/*    /!*  {() => <Link to="/User">JINMEI</Link>}*!/*/}
-            {/*    /!*</UserLogin>*!/*/}
-            {/*  </Menu.Item>*/}
-            {/*)}*/}
+
             {isExitVisible && token && (
               <Menu.Item key="4">
                 {' '}
