@@ -1,8 +1,24 @@
 .content {
-  //padding: 0 120px;
+  background-color: white;
   img {
     max-width: 100%;
     text-align: center;
     display: block;
+  }
+  :global {
+    .ant-page-header {
+      border-bottom: rgb(240, 242, 245) solid 1px;
+    }
+
+    .ant-divider {
+      height: 8px;
+    }
+
+    .ant-list {
+      margin-left: 8px;
+    }
+    .ant-list-items > li {
+      border-bottom: rgb(240, 242, 245) solid 1px;
+    }
   }
 }

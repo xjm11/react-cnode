@@ -40,14 +40,15 @@
   }
 
   .summery {
+    background-color: white;
     display: flex;
     justify-content: space-between;
     white-space: nowrap;
-    border-top: #ffffff solid 0.02px;
+    border-top: rgb(240, 242, 245) solid 1px;
     height: 50px;
     line-height: 50px;
     .dateDispaly {
-      padding-right: 2px;
+      padding-right: 10px;
     }
     .titleDiv {
       display: flex;

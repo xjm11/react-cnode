@@ -35,7 +35,7 @@ class User extends React.Component {
   render() {
     const { userInfo } = this.state;
     return (
-      <div style={{ backgroundColor: 'rgb(0,0,0,0.25)', padding: '0 100px' }}>
+      <div style={{ backgroundColor: 'white', padding: '0 100px' }}>
         <div>
           <h3>个人信息</h3>
           <img

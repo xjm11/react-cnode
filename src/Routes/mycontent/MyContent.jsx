@@ -96,7 +96,6 @@ class MyContent extends React.Component {
           <Paragraph>
             <div
               style={{
-                backgroundColor: '#F5F5F5',
                 padding: 24,
               }}
               dangerouslySetInnerHTML={{ __html: content.content }}
