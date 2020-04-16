@@ -1,8 +1,7 @@
 import React from 'react';
 import { Layout as AntLayout } from 'antd';
 import 'antd/dist/antd.css';
-import { Link } from 'react-router-dom';
-import { Switch } from 'react-router';
+import { Link, Switch } from 'react-router-dom';
 import styles from './Menu.module.scss';
 import { RoutesRender } from '../../../router';
 import classNames from 'classnames';

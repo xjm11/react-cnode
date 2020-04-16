@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-import { BannerReducer } from '../routes/layout/Layout.redux';
+import { BannerReducer } from '../pages/layout/Layout.redux';
 
 const rootReducer = combineReducers({
   banner: BannerReducer,

@@ -1,11 +1,11 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import MyContent from '../routes/mycontent/MyContent';
-import Login from '../routes/login/Login.jsx';
-import User from '../routes/user/User.jsx';
-import Menu from '../routes/home/Menu/Menu.jsx';
-import Home from '../routes/home/Home.jsx';
-import Layout from '../routes/layout/Layout.jsx';
+import MyContent from '../pages/mycontent/MyContent';
+import Login from '../pages/login/Login.jsx';
+import User from '../pages/user/User.jsx';
+import Menu from '../pages/home/Menu/Menu.jsx';
+import Home from '../pages/home/Home.jsx';
+import Layout from '../pages/layout/Layout.jsx';
 
 const RouteWithSubRoutes = route => (
   <Route
