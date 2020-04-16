@@ -91,20 +91,20 @@ margin-bottom: 16px;
 }
 
 .tip {
-  height: 10vh;
+  height: 8vh;
   background-color: white;
   display: flex;
   align-items: center;
-  justify-content: center;
+  padding-left: 16px;
+  width: 100%;
   .btn {
-    vertical-align: center;
     font-size: x-small;
     background-color: #61dafb;
     padding: 5px;
     border-radius: 5px;
-    width: 30vh;
     display: inline-block;
-    text-align: center;
-    align-items: center;
+    &:hover {
+      background-color: #d9dfe8;
+    }
   }
 }

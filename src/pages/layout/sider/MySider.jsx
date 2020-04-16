@@ -33,12 +33,14 @@ class MySider extends React.Component {
           </div>
         ) : (
           <div>
+            <div className={styles.section}>
             <div className={styles.title}>CNode：Node.js专业中文社区</div>
             <div className={styles.tip}>
               <div className={styles.btn} onClick={this.onRedirect}>
                 请登录
               </div>
             </div>
+          </div>
           </div>
         )}
         <div className={styles.section}>
