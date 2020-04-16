@@ -34,7 +34,7 @@ module.exports = ({ extractCSS = false, poolTimeout = 500 }) => {
       app: './src/index.jsx',
     },
     output: {
-      path: paths.appDist,
+      path: paths.appBuild,
       publicPath: '/',
     },
     resolve: {
