@@ -69,15 +69,16 @@
 }
 
 .section {
-margin-bottom: 16px;
-  overflow: hidden;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+ margin-bottom: 16px;
+
   .title {
     background-color: #d9dfe8;
     height: 40px;
     line-height: 40px;
     padding-left: 7px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
@@ -87,6 +88,9 @@ margin-bottom: 16px;
   font-size: 14px;
   div{
     padding: 3px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 }
 
