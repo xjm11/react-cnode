@@ -5,7 +5,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const WebpackBar = require('webpackbar');
 const { ContextReplacementPlugin } = require('webpack');
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 const paths = require('./paths');
 
