@@ -4,6 +4,7 @@ import { PageHeader, Button, Descriptions, message, Comment, List } from 'antd';
 import styles from './MyContent.module.scss';
 import { Redirect, Link } from 'react-router-dom';
 import { collectTopic, deCollectTopic, getDataById } from '../../services/request';
+import moment from 'moment'
 
 const { Paragraph } = Typography;
 const baseUrl = ' https://cnodejs.org/api/v1';
@@ -89,7 +90,7 @@ class MyContent extends React.Component {
             <Descriptions.Item label="">
               {content.visit_count}次浏览 来自<a>{content.tab}</a>
             </Descriptions.Item>
-            <Descriptions.Item label="创建时间">{content.create_at}</Descriptions.Item>
+            <Descriptions.Item label="创建时间">{moment(content.create_at).format('YYYY-MM-DD HH:mm')}</Descriptions.Item>
           </Descriptions>
         </PageHeader>
         <Typography>
@@ -112,11 +113,10 @@ class MyContent extends React.Component {
           renderItem={item => (
             <li>
               <Comment
-                author={<Link to={`/user/${item.author.loginname}`}>item.author.loginname</Link>}
-                // actions={item.is_uped && '楼主'}
+                author={<Link to={`/user/${item.author.loginname}`}>{item.author.loginname}</Link>}
                 avatar={item.author.avatar_url}
                 content=<div dangerouslySetInnerHTML={{ __html: item.content }} />
-                datetime={item.create_at}
+                datetime={moment(item.create_at).format('YYYY-MM-DD HH:mm')}
               />
             </li>
           )}

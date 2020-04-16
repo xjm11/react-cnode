@@ -2,7 +2,6 @@
   min-width: 200px;
   .topicsList {
     //width: 300px;
-    background-color: cyan;
     :global {
       .ant-list-item {
         background-color: rgb(245, 245, 245);
@@ -17,17 +16,48 @@
     }
   }
 
-  .titleDiv {
-    //display: flex;
-    //flex-direction: row;
-    //flex-wrap: nowrap;
-    position: relative;
-    //overflow: hidden;
-    text-overflow: ellipsis;
+  .summery {
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
     white-space: nowrap;
-    a {
-      position: absolute;
-      //display: block;
+    border-top: rgb(240, 242, 245) solid 1px;
+    height: 50px;
+    line-height: 50px;
+    .dateDispaly {
+      padding-right: 10px;
+      font-size: 10px;
+    }
+    .titleDiv {
+      display: flex;
+      width: 100%;
+      padding: 0 10px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      //height: 30px;
+      //line-height: 30px;
+      .count {
+        font-size: xx-small;
+        width: 60px;
+        text-align: center;
+      }
+      span {
+        vertical-align: middle;
+        flex-shrink: 0;
+        text-align: center;
+        margin-right: 5px;
+        margin-top: 8px;
+        margin-bottom: 8px;
+        line-height: 34px;
+      }
+      a {
+        display: inline-block;
+        text-align: center;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
     }
   }
 }

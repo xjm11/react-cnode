@@ -2,6 +2,7 @@ import React from 'react';
 import { message } from 'antd';
 import { getUserInfo } from '../../services/request';
 import Collection from './Collection';
+import styles from './User.module.scss';
 
 class User extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ class User extends React.Component {
   render() {
     const { userInfo } = this.state;
     return (
-      <div style={{ backgroundColor: 'white', padding: '0 100px' }}>
+      <div style={{ backgroundColor: 'white', padding: '0 16px' }}>
         <div>
           <h3>个人信息</h3>
           <img
@@ -46,9 +47,9 @@ class User extends React.Component {
           <span style={{ verticalAlign: 'middle' }}>{userInfo.loginname}</span>
         </div>
         <br />
-        收藏的主题
+        <span className={styles.subTitle}>收藏的主题</span>
         <Collection data={userInfo.recent_topics} />
-        最近参与的话题
+        <span className={styles.subTitle}>最近参与的话题</span>
         <Collection data={userInfo.recent_replies} />
       </div>
     );

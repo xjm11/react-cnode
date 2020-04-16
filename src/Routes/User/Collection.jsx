@@ -29,6 +29,7 @@ class Collection extends React.Component {
   };
 
   render() {
+    moment.locale('zh-cn');
     const { data } = this.props;
     const { dataList, page } = this.state;
     const dataArr = data && !dataList.length && data.slice(0, 5);
@@ -43,26 +44,23 @@ class Collection extends React.Component {
           className={styles.topicsList}
           dataSource={dataList.length ? dataList : dataArr}
           renderItem={item => (
-            <List.Item>
-              <List.Item.Meta
-                avatar={<Avatar src={item.author && item.author.avatar_url} />}
-                description={``}
-                title={
-                  <div className={styles.titleDiv}>
-                    <span className={item.top ? styles.top : styles.tab}>
-                      {item.top ? '置顶' : tabMap[item.tab]}
-                    </span>{' '}
-                    {/*{item.title}*/}
-                    <Link to={`/content/${item.id}`}>{item.title}</Link>
-                  </div>
-                }
-              />
-              <div>
-                {moment(item.last_reply_at)
+            <>
+              <div className={styles.summery}  >
+                <div className={styles.titleDiv}>
+                  <Avatar src={item.author.avatar_url} />
+                  <span className={item.top ? styles.top : styles.tab}>
+                    {item.top ? '置顶' : tabMap[item.tab]}
+                  </span>{' '}
+                  <Link to={`/my_content/${item.id}`}>{item.title}</Link>
+                </div>
+                <span className={styles.dateDispaly}>
+                  {' '}
+                  {moment(item.last_reply_at)
                   .startOf('hour')
                   .fromNow()}
+                </span>
               </div>
-            </List.Item>
+            </>
           )}
         />
         <Pagination
