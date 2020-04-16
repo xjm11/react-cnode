@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Avatar, message } from 'antd';
-import styles from './Layout.module.scss';
+import styles from '../Layout.module.scss';
 
 class MySider extends React.Component {
   onRedirect = () => {

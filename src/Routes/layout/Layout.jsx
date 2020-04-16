@@ -5,8 +5,8 @@ import styles from './Layout.module.scss';
 import { RoutesRender } from '../../router';
 import { actions } from './Layout.redux';
 import { connect } from 'react-redux';
-import MySider from './MySider';
-import Login from '../Login';
+import MySider from './sider/MySider';
+import Login from '../login/Login';
 
 const { Header, Footer } = AntLayout;
 class Layout extends React.Component {

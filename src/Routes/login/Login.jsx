@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
-import { post } from '../services/httpRequst';
+import { post } from '../../services/httpRequst';
 import { connect } from 'react-redux';
-import { actions } from './layout/Layout.redux';
-import { loginWithToken } from '../services/request';
+import { actions } from '../layout/Layout.redux';
+import { loginWithToken } from '../../services/request';
 
 function hasErrors(fieldsError) {
   return Object.keys(fieldsError).some(field => fieldsError[field]);

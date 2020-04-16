@@ -1,7 +1,7 @@
 import React from 'react';
 import { message } from 'antd';
 import { getUserInfo } from '../../services/request';
-import Collection from './Collection';
+import Collection from './collection/Collection';
 import styles from './User.module.scss';
 
 class User extends React.Component {
