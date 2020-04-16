@@ -44,11 +44,13 @@ class HorizontalLoginForm extends React.Component {
           console.log(JSON.stringify(response));
 
           const { history } = this.props;
+          console.log(this.props);
           history.push('/', this.state);
           console.log(history);
           console.log(2222);
         })
-        .catch(() => {
+        .catch((error) => {
+          console.log(error);
           message.error('登录失败');
         });
     });
@@ -61,7 +63,7 @@ class HorizontalLoginForm extends React.Component {
       <Form
         layout="inline"
         onSubmit={this.handleSubmit}
-        style={{ display: 'flex', justifyContent: 'center', padding: '100px' }}
+        style={{ display: 'flex', justifyContent: 'center', padding: '100px' ,'background-color': 'white'}}
       >
         <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
           {getFieldDecorator('token', {

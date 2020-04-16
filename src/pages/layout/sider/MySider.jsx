@@ -4,10 +4,16 @@ import { Avatar, message } from 'antd';
 import styles from '../Layout.module.scss';
 
 class MySider extends React.Component {
+  constructor (props) {
+    super(props)
+    console.log(props);
+  }
+
   onRedirect = () => {
     console.log(12);
     console.log(this.props);
-    this.props.onRedirect(true);
+    const { history } = this.props;
+    history.push('/login');
   };
 
   render() {

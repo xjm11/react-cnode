@@ -19,6 +19,7 @@ class MyContent extends React.Component {
   }
 
   componentDidMount() {
+    console.log(123);
     const params = {
       topic: this.props.match.params.id,
       accesstoken: localStorage.getItem('cnodeToken'),
@@ -90,7 +91,7 @@ class MyContent extends React.Component {
             <Descriptions.Item label="">
               {content.visit_count}次浏览 来自<a>{content.tab}</a>
             </Descriptions.Item>
-            <Descriptions.Item label="创建时间">{moment(content.create_at).format('YYYY-MM-DD HH:mm')}</Descriptions.Item>
+            <Descriptions.Item label="创建时间">{moment(content.create_at).format('YYYY-MM-DD HH:mm:ss')}</Descriptions.Item>
           </Descriptions>
         </PageHeader>
         <Typography>

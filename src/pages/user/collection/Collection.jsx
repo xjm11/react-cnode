@@ -31,9 +31,9 @@ class Collection extends React.Component {
   render() {
     moment.locale('zh-cn');
     const { data } = this.props;
+    console.log('data', data);
     const { dataList, page } = this.state;
     const dataArr = data && !dataList.length && data.slice(0, 5);
-    console.log(dataArr);
     if (dataList && dataList.length === 0 && dataArr && dataArr.length === 0) {
       return <p>暂时没有数据</p>;
     }

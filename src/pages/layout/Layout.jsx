@@ -25,17 +25,15 @@ class Layout extends React.Component {
     hiddenExit();
   };
 
-  handelDedirect = data => {
-    console.log('layout', data);
-    this.setState({
-      isRedirectToLogin: data,
-    });
-  };
-
   render() {
+    console.log(this.props);
     const token = localStorage.getItem('cnodeToken');
     const { routes, isExitVisible } = this.props;
     const { isRedirectToLogin } = this.state;
+    if(isRedirectToLogin) {
+     return  <Redirect to="/Login" />
+    }
+
     return (
       <AntLayout>
         <Header style={{ zIndex: 1, width: '100%' }} className={styles.box}>
@@ -66,18 +64,16 @@ class Layout extends React.Component {
             )}
           </Menu>
         </Header>
-        {isRedirectToLogin ? (
-          <Login />
-        ) : (
+
           <div className={styles.LayCenter}>
             <div className={styles.layContent}>
               <Switch>{RoutesRender(routes)}</Switch>
             </div>
             <div className={styles.laySider}>
-              <MySider onRedirect={data => this.handelDedirect(data)} />
+              <MySider {...this.props}/>
             </div>
           </div>
-        )}
+        }
         <Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
       </AntLayout>
     );
