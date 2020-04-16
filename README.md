@@ -8,7 +8,7 @@
 ```
 git clone
 cd react-cnode
-yarn install（按照依赖）
+yarn install（安装依赖）
 ```
 #### 运行
 ```
