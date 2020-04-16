@@ -21,8 +21,8 @@ class MySider extends React.Component {
       <>
         {userInfo ? (
           <div className={styles.section}>
+            <div className={styles.title}>个人信息</div>
             <Link to={`/User/${userInfo ? userInfo.loginname : ''}`}>
-              <div className={styles.title}>个人信息</div>
               <div className={styles.introduction}>
                 <Avatar src={userInfo ? userInfo.avatar_url : ''} />{' '}
                 {userInfo ? userInfo.loginname : ''}
