@@ -20,7 +20,7 @@ class MySider extends React.Component {
     return (
       <>
         {userInfo ? (
-          <div>
+          <div className={styles.section}>
             <Link to={`/User/${userInfo ? userInfo.loginname : ''}`}>
               <div className={styles.title}>个人信息</div>
               <div className={styles.introduction}>
@@ -35,12 +35,77 @@ class MySider extends React.Component {
           <div>
             <div className={styles.title}>CNode：Node.js专业中文社区</div>
             <div className={styles.tip}>
-              <span className={styles.btn} onClick={this.onRedirect}>
+              <div className={styles.btn} onClick={this.onRedirect}>
                 请登录
-              </span>
+              </div>
             </div>
           </div>
         )}
+        <div className={styles.section}>
+          <div className={styles.title}>无人回复的话题(假链接)</div>
+          <div  className={styles.otherTip}>
+              <div >
+                typeorm 怎么将结果字段进行映射
+              </div>
+            <div >
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+
+            <div >
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+            <div >
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+          </div>
+        </div>
+        <div className={styles.section}>
+          <div className={styles.title}>商业合作</div>
+          <div className={styles.otherTip}>
+            <div >
+              typeorm 怎么将结果字段进行映射
+            </div>
+            <div >
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+            <div>
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div >
+              ShowMeBug 项目（程序员面试神器）
+            </div>
+            <div>
+                ShowMeBug 项目（程序员面试神器）
+              </div>
+          </div>
+        </div>
       </>
     );
   }

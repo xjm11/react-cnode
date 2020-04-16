@@ -68,11 +68,26 @@
   padding: 10px;
 }
 
-.title {
-  background-color: #d9dfe8;
-  height: 40px;
-  line-height: 40px;
-  padding-left: 7px;
+.section {
+margin-bottom: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  .title {
+    background-color: #d9dfe8;
+    height: 40px;
+    line-height: 40px;
+    padding-left: 7px;
+  }
+}
+
+
+.otherTip {
+  background-color: white;
+  font-size: 14px;
+  div{
+    padding: 3px;
+  }
 }
 
 .tip {
