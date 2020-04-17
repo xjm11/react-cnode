@@ -5,6 +5,7 @@ import { List, Avatar, Pagination, message } from 'antd';
 import styles from './Home.module.scss';
 import { getHomeData } from '../../services/request';
 import moment from 'moment';
+import { checkUndfind } from '../../utils/checkUndefind'
 
 const tabMap = {
   share: '分享',
@@ -94,7 +95,9 @@ class Home extends React.Component {
             <>
               <div className={styles.summery}  >
                 <div className={styles.titleDiv}>
-                  <Avatar src={item.author.avatar_url} />
+                  <Link to={`/user/${checkUndfind(item.author.loginname)}`}>
+                    <Avatar src={checkUndfind(item.author.avatar_url)} />
+                  </Link>
                   <span
                     className={styles.count}
                   >{`${item.reply_count}/${item.visit_count}`}</span>{' '}

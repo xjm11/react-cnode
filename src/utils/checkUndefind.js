@@ -1,0 +1,1 @@
+export const checkUndfind = (data)=> (data ? data : '');
