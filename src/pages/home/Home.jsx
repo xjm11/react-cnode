@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { List, Avatar, Pagination, message } from 'antd';
+import { List, Avatar, Pagination, message, Spin } from 'antd';
 
 import styles from './Home.module.scss';
 import { getHomeData } from '../../services/request';
 import moment from 'moment';
-import { checkUndfind } from '../../utils/checkUndefind'
+import { checkUndfind } from '../../utils/checkUndefind';
 
 const tabMap = {
   share: '分享',
@@ -18,6 +18,7 @@ class Home extends React.Component {
     this.state = {
       topicList: [],
       page: 1,
+      isSpin: false,
     };
   }
 
@@ -28,6 +29,9 @@ class Home extends React.Component {
       },
     } = this.props;
     const { page } = this.state;
+    this.setState({
+      isSpin: true,
+    });
     this.getFetchData(tab, page);
   }
 
@@ -44,6 +48,9 @@ class Home extends React.Component {
     } = this.props;
     if (preTab !== tab) {
       const page = 1;
+      this.setState({
+        isSpin: true,
+      });
       this.getFetchData(tab, 1);
       this.setState({
         page: page,
@@ -60,9 +67,10 @@ class Home extends React.Component {
       tab: nowTab,
     };
     getHomeData(params)
-      .then(data =>
+      .then((data) =>
         this.setState({
           topicList: data,
+          isSpin: false,
         }),
       )
       .catch(() => {
@@ -70,7 +78,7 @@ class Home extends React.Component {
       });
   }
 
-  onChange = page => {
+  onChange = (page) => {
     const {
       match: {
         params: { tab },
@@ -83,24 +91,27 @@ class Home extends React.Component {
   };
 
   render() {
-    moment.locale('zh-cn')
-    const { topicList, page } = this.state;
-    return (
+    moment.locale('zh-cn');
+    const { topicList, page, isSpin } = this.state;
+    return isSpin ? (
+      <div className={styles.spin}>
+        <Spin size="large" />
+      </div>
+    ) : (
       <div className={styles.container}>
+        {' '}
         <List
           itemLayout="horizontal"
           className={styles.topicsList}
           dataSource={topicList}
-          renderItem={item => (
+          renderItem={(item) => (
             <>
-              <div className={styles.summery}  >
+              <div className={styles.summery}>
                 <div className={styles.titleDiv}>
                   <Link to={`/user/${checkUndfind(item.author.loginname)}`}>
                     <Avatar src={checkUndfind(item.author.avatar_url)} />
                   </Link>
-                  <span
-                    className={styles.count}
-                  >{`${item.reply_count}/${item.visit_count}`}</span>{' '}
+                  <span className={styles.count}>{`${item.reply_count}/${item.visit_count}`}</span>{' '}
                   <span className={item.top ? styles.top : styles.tab}>
                     {item.top ? '置顶' : tabMap[item.tab]}
                   </span>{' '}
@@ -108,9 +119,7 @@ class Home extends React.Component {
                 </div>
                 <span className={styles.dateDispaly}>
                   {' '}
-                  {moment(item.last_reply_at)
-                    .startOf('hour')
-                    .fromNow()}
+                  {moment(item.last_reply_at).startOf('hour').fromNow()}
                 </span>
               </div>
             </>

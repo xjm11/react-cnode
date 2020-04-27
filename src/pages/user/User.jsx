@@ -3,12 +3,14 @@ import { message } from 'antd';
 import { getUserInfo } from '../../services/request';
 import Collection from './collection/Collection';
 import styles from './User.module.scss';
+import { checkSpin } from '../../utils/CheckSpin';
 
 class User extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       userInfo: {},
+      isSpin: false,
     };
   }
 
@@ -22,10 +24,14 @@ class User extends React.Component {
     if (!user) {
       return;
     }
+    this.setState({
+      isSpin: true,
+    });
     getUserInfo(user)
-      .then(data => {
+      .then((data) => {
         this.setState({
           userInfo: data,
+          isSpin: false,
         });
       })
       .catch(() => {
@@ -34,7 +40,7 @@ class User extends React.Component {
   }
 
   render() {
-    const { userInfo } = this.state;
+    const { userInfo, isSpin } = this.state;
     return (
       <div style={{ backgroundColor: 'white', padding: '0 16px' }}>
         <div>
@@ -48,9 +54,10 @@ class User extends React.Component {
         </div>
         <br />
         <span className={styles.subTitle}>收藏的主题</span>
-        <Collection data={userInfo.recent_topics} />
+        {checkSpin(<Collection data={userInfo.recent_topics} />, isSpin)}
+
         <span className={styles.subTitle}>最近参与的话题</span>
-        <Collection data={userInfo.recent_replies} />
+        {checkSpin(<Collection data={userInfo.recent_replies} />, isSpin)}
       </div>
     );
   }

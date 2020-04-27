@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Redirect, Switch } from 'react-router-dom';
-import { Layout as AntLayout, Menu, message } from 'antd';
+import { BackTop, Layout as AntLayout, Menu, message } from 'antd';
 import styles from './Layout.module.scss';
 import { RoutesRender } from '../../router';
 import { actions } from './Layout.redux';
@@ -30,8 +30,8 @@ class Layout extends React.Component {
     const token = localStorage.getItem('cnodeToken');
     const { routes, isExitVisible } = this.props;
     const { isRedirectToLogin } = this.state;
-    if(isRedirectToLogin) {
-     return  <Redirect to="/Login" />
+    if (isRedirectToLogin) {
+      return <Redirect to="/Login" />;
     }
 
     return (
@@ -64,23 +64,22 @@ class Layout extends React.Component {
             )}
           </Menu>
         </Header>
-
-          <div className={styles.LayCenter}>
-            <div className={styles.layContent}>
-              <Switch>{RoutesRender(routes)}</Switch>
-            </div>
-            <div className={styles.laySider}>
-              <MySider {...this.props}/>
-            </div>
+        <div className={styles.LayCenter}>
+          <div className={styles.layContent}>
+            <Switch>{RoutesRender(routes)}</Switch>
           </div>
-        }
-        <Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
+          <div className={styles.laySider}>
+            <MySider {...this.props} />
+          </div>
+        </div>
+        }<Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
+        <BackTop />
       </AntLayout>
     );
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     isExitVisible: state.banner.isExitVisible,
   };

@@ -7,17 +7,17 @@ import Menu from '../pages/home/Menu/Menu.jsx';
 import Home from '../pages/home/Home.jsx';
 import Layout from '../pages/layout/Layout.jsx';
 
-const RouteWithSubRoutes = route => (
+const RouteWithSubRoutes = (route) => (
   <Route
     path={route.path}
-    render={props => (
+    render={(props) => (
       // pass the sub-router down to keep nesting
       <route.component {...props} routes={route.routes} />
     )}
   />
 );
 
-export const RoutesRender = routes => {
+export const RoutesRender = (routes) => {
   return routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />);
 };
 

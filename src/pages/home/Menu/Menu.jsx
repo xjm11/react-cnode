@@ -1,12 +1,11 @@
 import React from 'react';
 import { Layout as AntLayout } from 'antd';
-import 'antd/dist/antd.css';
 import { Link, Switch } from 'react-router-dom';
 import styles from './Menu.module.scss';
 import { RoutesRender } from '../../../router';
 import classNames from 'classnames';
 
-const { Content, Footer } = AntLayout;
+const { Content } = AntLayout;
 const layoutMenuOptions = [
   { path: 'all', name: '全部' },
   { path: 'good', name: '精华' },
@@ -30,7 +29,7 @@ class Menu extends React.Component {
       <AntLayout>
         <Content className={styles.between}>
           <ul className={styles.menu}>
-            {layoutMenuOptions.map(item => {
+            {layoutMenuOptions.map((item) => {
               const isSelect = pathname === `/topics/${item.path}`;
               const liClass = classNames({
                 selected: isSelect,
