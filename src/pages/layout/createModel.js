@@ -1,3 +1,5 @@
+import { produce } from 'immer';
+
 const createModel = ({ namespace, state: initialState, reducers, effects: propEffects }) => {
   const actions = {};
   const handlers = Object.entries(reducers).reduce((all, [key, fn]) => {
@@ -16,7 +18,10 @@ const createModel = ({ namespace, state: initialState, reducers, effects: propEf
   const reducer = (state = initialState, action) => {
     if (handlers.hasOwnProperty(action.type)) {
       const fn = handlers[action.type];
-      return fn(state, action.payload);
+
+      return produce(state, (draftState) => {
+        fn(draftState, action.payload);
+      });
     }
     return state;
   };

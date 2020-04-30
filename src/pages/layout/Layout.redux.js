@@ -9,16 +9,10 @@ const model = createModel({
   state: initialState,
   reducers: {
     hiddenExit: (state) => {
-      return {
-        ...state,
-        isExitVisible: false,
-      };
+      state.isExitVisible = false;
     },
     visibleExit: (state) => {
-      return {
-        ...state,
-        isExitVisible: true,
-      };
+      state.isExitVisible = true;
     },
     increment: (state, payload) => {
       return {
