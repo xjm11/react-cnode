@@ -1,46 +1,44 @@
-export const namespace = 'banner';
-
-const REQUEST = `${namespace}/request_data`;
-const HIDDEN = `${namespace}/hidden_data`;
-const VISIBLE = `${namespace}/visible_data`;
-
+import createModel from './createModel';
 const initialState = {
   isExitVisible: true,
+  count: 0,
 };
 
-export const actions = {
-  requestData: () => {
-    return { type: REQUEST, payload: true };
-  },
-  hiddenExit: (token, info) => {
-    return { type: HIDDEN, payload: token, info: info };
-  },
-  visibleExit: (token, info) => {
-    return { type: VISIBLE, payload: token, info: info };
-  },
-};
-
-export const BannerReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case REQUEST: {
-      return {
-        ...state,
-        isExitVisible: true,
-      };
-    }
-    case HIDDEN: {
+const model = createModel({
+  namespace: 'layout',
+  state: initialState,
+  reducers: {
+    hiddenExit: (state) => {
       return {
         ...state,
         isExitVisible: false,
       };
-    }
-    case VISIBLE: {
+    },
+    visibleExit: (state) => {
       return {
         ...state,
         isExitVisible: true,
       };
-    }
-    default:
-      return state;
-  }
-};
+    },
+    increment: (state, payload) => {
+      return {
+        ...state,
+        count: state.count + payload,
+      };
+    },
+    dec(state, payload) {
+      return {
+        ...state,
+        count: state.count - payload,
+      };
+    },
+  },
+  effects: (dispatch) => ({
+    inc: (num) => {
+      setTimeout(() => {
+        dispatch(model.actions.increment(num));
+      }, 1500);
+    },
+  }),
+});
+export default model;

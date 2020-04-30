@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Link, Redirect, Switch } from 'react-router-do
 import { BackTop, Layout as AntLayout, Menu, message } from 'antd';
 import styles from './Layout.module.scss';
 import { RoutesRender } from '../../router';
-import { actions } from './Layout.redux';
+import model from './Layout.redux';
 import { connect } from 'react-redux';
 import MySider from './sider/MySider';
 import Login from '../login/Login';
@@ -65,6 +65,7 @@ class Layout extends React.Component {
           </Menu>
         </Header>
         <div className={styles.LayCenter}>
+          {/*<button onClick={() => this.props.inc(4)}>123</button>*/}
           <div className={styles.layContent}>
             <Switch>{RoutesRender(routes)}</Switch>
           </div>
@@ -72,7 +73,7 @@ class Layout extends React.Component {
             <MySider {...this.props} />
           </div>
         </div>
-        }<Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
+        <Footer style={{ textAlign: 'center' }}>Xuu Design ©2020 Created by XuuJ</Footer>
         <BackTop />
       </AntLayout>
     );
@@ -80,9 +81,10 @@ class Layout extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const { namespace } = model;
   return {
-    isExitVisible: state.banner.isExitVisible,
+    isExitVisible: state[namespace].isExitVisible,
   };
 };
 
-export default connect(mapStateToProps, actions)(Layout);
+export default connect(mapStateToProps, { ...model.dispatches })(Layout);

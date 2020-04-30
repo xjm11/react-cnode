@@ -3,7 +3,7 @@ import { Spin } from 'antd';
 
 export function checkSpin(Component, isSpin = false) {
   return isSpin ? (
-    <div style={{ 'padding-top': '50px', 'text-align': 'center' }}>
+    <div style={{ paddingTop: '50px', textAlign: 'center' }}>
       <Spin />
     </div>
   ) : (

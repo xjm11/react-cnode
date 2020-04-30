@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { BannerReducer } from '../pages/layout/Layout.redux';
+import layoutModel from '../pages/layout/Layout.redux';
 
 const rootReducer = combineReducers({
-  banner: BannerReducer,
+  [layoutModel.namespace]: layoutModel.reducer,
 });
 
 export default rootReducer;

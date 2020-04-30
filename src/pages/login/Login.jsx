@@ -1,12 +1,11 @@
 import React from 'react';
 import { Form, Icon, Input, Button, message } from 'antd';
-import { post } from '../../services/httpRequst';
 import { connect } from 'react-redux';
-import { actions } from '../layout/Layout.redux';
+import model from '../layout/Layout.redux';
 import { loginWithToken } from '../../services/request';
 
 function hasErrors(fieldsError) {
-  return Object.keys(fieldsError).some(field => fieldsError[field]);
+  return Object.keys(fieldsError).some((field) => fieldsError[field]);
 }
 
 class HorizontalLoginForm extends React.Component {
@@ -22,7 +21,7 @@ class HorizontalLoginForm extends React.Component {
     this.props.form.validateFields();
   }
 
-  handleSubmit = e => {
+  handleSubmit = (e) => {
     const { visibleExit } = this.props;
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
@@ -31,8 +30,7 @@ class HorizontalLoginForm extends React.Component {
       }
 
       loginWithToken({ accesstoken: values.token })
-        .then(response => {
-          console.log('user', response);
+        .then((response) => {
           localStorage.setItem('cnodeToken', values.token);
           localStorage.setItem('userInfo', JSON.stringify(response));
           message.success('登录成功');
@@ -40,17 +38,11 @@ class HorizontalLoginForm extends React.Component {
             redirectToIndex: true,
           });
           visibleExit();
-          console.log(123);
-          console.log(JSON.stringify(response));
 
           const { history } = this.props;
-          console.log(this.props);
           history.push('/', this.state);
-          console.log(history);
-          console.log(2222);
         })
         .catch((error) => {
-          console.log(error);
           message.error('登录失败');
         });
     });
@@ -63,7 +55,12 @@ class HorizontalLoginForm extends React.Component {
       <Form
         layout="inline"
         onSubmit={this.handleSubmit}
-        style={{ display: 'flex', justifyContent: 'center', padding: '100px' ,'background-color': 'white'}}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          padding: '100px',
+          'background-color': 'white',
+        }}
       >
         <Form.Item validateStatus={usernameError ? 'error' : ''} help={usernameError || ''}>
           {getFieldDecorator('token', {
@@ -85,11 +82,11 @@ class HorizontalLoginForm extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { isExitVisible } = state.banner.isExitVisible;
+const mapStateToProps = (state) => {
+  const { isExitVisible } = state[model.namespace].isExitVisible;
   return {
     isExitVisible: isExitVisible,
   };
 };
 
-export default connect(mapStateToProps, actions)(Form.create()(HorizontalLoginForm));
+export default connect(mapStateToProps, { ...model.actions })(Form.create()(HorizontalLoginForm));
